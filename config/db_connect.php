@@ -1,8 +1,10 @@
 <?php
-// Supabase Connection Settings - Sydney Region Pooler
+// Supabase Connection Settings - Sydney Region (ap-southeast-2)
 $host = getenv('SUPABASE_DB_HOST') ?: 'aws-0-ap-southeast-2.pooler.supabase.com';
 $db   = getenv('SUPABASE_DB_NAME') ?: 'postgres';
-$user = getenv('SUPABASE_DB_USER') ?: 'postgres.fqzchoftygzyqwguxyzu';
+
+// Standard User format para sa Supabase Pooler
+$user = getenv('SUPABASE_DB_USER') ?: 'postgres';
 $pass = getenv('SUPABASE_DB_PASS');
 $port = "6543"; // Connection Pooler Port para sa Vercel
 
