@@ -1,18 +1,21 @@
 <?php
-// config/db_connect.php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-$host     = "localhost";
-$user     = "root";
-$pass     = ""; 
-$dbname   = "attendance_db";
+// Kunin ang Environment Variables mula sa Vercel Dashboard
+$host = getenv('SUPABASE_DB_HOST') ?: 'db.fqzchoftygzyqwguxyzu.supabase.co';
+$db   = getenv('SUPABASE_DB_NAME') ?: 'postgres';
+$user = getenv('SUPABASE_DB_USER') ?: 'postgres';
+$pass = getenv('SUPABASE_DB_PASS');
+$port = "5432"; // Explicit TCP Port para sa Supabase
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    // Siguraduhing may host at port sa DSN para pilitin ang TCP network socket
+    $dsn = "pgsql:host=$host;port=$port;dbname=$db;";
+    
+    $pdo = new PDO($dsn, $user, $pass, [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ]);
+    
 } catch (PDOException $e) {
     die("Database Connection Error: " . $e->getMessage());
 }
