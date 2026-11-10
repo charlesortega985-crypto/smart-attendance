@@ -1,13 +1,12 @@
 <?php
-// Kunin ang Environment Variables mula sa Vercel Dashboard
-$host = getenv('SUPABASE_DB_HOST') ?: 'db.fqzchoftygzyqwguxyzu.supabase.co';
+// Supabase Connection Pooling Host & Port para sa Vercel IPv4 compatibility
+$host = getenv('SUPABASE_DB_HOST') ?: 'aws-0-ap-southeast-1.pooler.supabase.com'; // O ang Pooler Host mula sa Supabase Dashboard
 $db   = getenv('SUPABASE_DB_NAME') ?: 'postgres';
-$user = getenv('SUPABASE_DB_USER') ?: 'postgres';
+$user = getenv('SUPABASE_DB_USER') ?: 'postgres.fqzchoftygzyqwguxyzu'; // Direct reference format sa pooler
 $pass = getenv('SUPABASE_DB_PASS');
-$port = "5432"; // Explicit TCP Port para sa Supabase
+$port = "6543"; // Connection Pooler Port (IPv4 compatible)
 
 try {
-    // Siguraduhing may host at port sa DSN para pilitin ang TCP network socket
     $dsn = "pgsql:host=$host;port=$port;dbname=$db;";
     
     $pdo = new PDO($dsn, $user, $pass, [
