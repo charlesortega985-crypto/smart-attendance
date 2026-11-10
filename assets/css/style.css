@@ -1,0 +1,170 @@
+/* assets/css/style.css */
+:root {
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --card-bg: #ffffff;
+    --text-main: #212529;
+    --text-muted: #6c757d;
+    --inner-bg: #f8fafc;
+    --border-color: #e2e8f0;
+    --table-head-bg: #f8fafc;
+    --input-bg: #ffffff;
+    --input-text: #212529;
+}
+
+[data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+    --header-bg: rgba(30, 41, 59, 0.95);
+    --card-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #cbd5e1;
+    --inner-bg: #0f172a;
+    --border-color: #334155;
+    --table-head-bg: #0f172a;
+    --input-bg: #0f172a;
+    --input-text: #ffffff;
+}
+
+body {
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 40px;
+    color: var(--text-main);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* COMPREHENSIVE TEXT COLOR FIX FOR DARK MODE */
+[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, 
+[data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6,
+[data-theme="dark"] p, [data-theme="dark"] span, [data-theme="dark"] small,
+[data-theme="dark"] strong, [data-theme="dark"] b, [data-theme="dark"] label,
+[data-theme="dark"] .form-label, 
+[data-theme="dark"] .text-dark, [data-theme="dark"] .text-muted, [data-theme="dark"] .text-secondary {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] a {
+    color: #60a5fa !important;
+}
+
+[data-theme="dark"] a.text-primary {
+    color: #60a5fa !important;
+}
+
+.main-header {
+    background: var(--header-bg);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.nav-pill-custom {
+    background: var(--header-bg);
+    border-radius: 15px;
+    padding: 8px;
+}
+
+.nav-link-item {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link-item.active {
+    background: #6366f1;
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .nav-link-item {
+    color: #e2e8f0 !important;
+}
+
+.content-card, .login-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    color: var(--text-main);
+}
+
+.inner-box {
+    background: var(--inner-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+}
+
+/* INPUT & INPUT GROUP FIXES PARA SA DARK MODE */
+[data-theme="dark"] .form-control {
+    background-color: var(--input-bg) !important;
+    color: var(--input-text) !important;
+    border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .form-control:focus {
+    background-color: var(--input-bg) !important;
+    color: var(--input-text) !important;
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
+}
+
+[data-theme="dark"] .form-control::placeholder {
+    color: #94a3b8 !important;
+    opacity: 1;
+}
+
+[data-theme="dark"] .input-group-text {
+    background-color: #334155 !important;
+    color: #ffffff !important;
+    border-color: var(--border-color) !important;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    border-radius: 16px;
+    padding: 20px;
+    color: #ffffff;
+}
+
+.profile-img-header {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #6366f1;
+}
+
+.profile-icon-fallback {
+    width: 75px;
+    height: 75px;
+    background: #6366f1;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    margin: 0 auto;
+}
+
+.table {
+    color: var(--text-main) !important;
+}
+
+.table-light {
+    background-color: var(--table-head-bg) !important;
+    color: var(--text-main) !important;
+}
+
+#qrcode img {
+    margin: 0 auto;
+    padding: 15px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 2px dashed #6366f1;
+}
